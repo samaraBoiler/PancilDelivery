@@ -4,81 +4,34 @@
 @{
     ViewData["Title"] = "Index";
 }
+<section class="product">
+    <div class="products=category">
+        <h3 class="category-title">Каталог товаров</h3>
+        <nav class="category-navigation">
+            @foreach (var category in Model.Category)
+            {
+                <a class="category-link">
+                    <img src="@Html.DisplayFor(item=>category.IconUrl)" />
 
-<h1>Index</h1>
-
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].PricePerUnit)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].Volume)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].Rating)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].ExpirationDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].CategoryldNavigation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].ManufactureldNavigation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].Unit)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Product) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PricePerUnit)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Volume)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rating)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ExpirationDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryldNavigation.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ManufactureldNavigation.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Unit.Id)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+                    <p>@Html.DisplayFor(item=>category.Name)</p>
+                </a>
+     }
+        </nav>
+    </div>
+    <dib class="products-list">
+        @foreach (var product in Model.Product)
+        {
+            <article class="prosuct-card">
+                <img class="card-image" src="" />
+                <p class="card-rating">@Html.DisplayFor(item=> product.Rating)</p>
+                <p class="card-title">@Html.DisplayFor(item => product.Title)</p>
+                <p class="card-volum">@Html.DisplayFor(item => product.Volume)</p>
+                <span>
+                    <p class="card-price">@Html.DisplayFor(item => product.PricePerUnit)</p>
+                    <p class="card-unit">@Html.DisplayFor(item => product.Unit.Name)</p>
+                </span>
+                <button class="card-button">В корзину</button>
+            </article>
+        }
+    </dib>
+</section>

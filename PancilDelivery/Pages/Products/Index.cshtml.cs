@@ -19,6 +19,7 @@ namespace PancilDelivery.Pages.Products
         }
 
         public IList<Product> Product { get;set; } = default!;
+        public IList<Category> Category { get; set; } = default!;
 
         public async Task OnGetAsync()
         {
@@ -26,6 +27,7 @@ namespace PancilDelivery.Pages.Products
                 .Include(p => p.CategoryldNavigation)
                 .Include(p => p.ManufactureldNavigation)
                 .Include(p => p.Unit).ToListAsync();
+            Category = await _context.Categories.ToListAsync();
         }
     }
 }
